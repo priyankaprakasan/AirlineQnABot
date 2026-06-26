@@ -108,11 +108,11 @@ demo = gr.ChatInterface(
         "**Ask about:** Leave policies · Benefits · Code of conduct · Disciplinary procedures · Compliance"
     ),
     examples=[
-        1. "How do I apply for annual leave, and how much notice is required?"
-        2. "What is the process for requesting emergency bereavement leave?"
-        3. "Can unused sick days be carried over to the next year?"
-        4. "What happens to my leave balance if I resign during the year?"
-        5. "Are flight crew entitled to additional rest days after long-haul flights?"
+        "How do I apply for annual leave, and how much notice is required?",
+        "What is the process for requesting emergency bereavement leave?",
+        "Can unused sick days be carried over to the next year?",
+        "What happens to my leave balance if I resign during the year?",
+        "Are flight crew entitled to additional rest days after long-haul flights?"
     ],
 )
 
