@@ -11,7 +11,7 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
 
-PDF_PATH = "data/FlykiteAirlinesHRP.pdf"
+PDF_PATH = "FlykiteAirlinesHRP.pdf"
 CHROMA_DB_PATH = "hr_flykite_db"
 # GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "") # No longer needed for LlamaCpp
 
