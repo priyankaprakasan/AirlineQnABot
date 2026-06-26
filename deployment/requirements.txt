@@ -1,5 +1,5 @@
 
-gradio>=6.12
+gradio<5.0.0
 llama-cpp-python==0.1.85
 langchain-community>=0.3
 langchain-core>=0.3
