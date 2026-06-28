@@ -66,7 +66,7 @@ def load_retriever():
         with st.spinner("Astra DB collection is empty. Ingesting PDF..."):
             loader = PyPDFLoader(PDF_PATH)
             docs = loader.load()
-            splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20)
+            splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20,encoding_name='cl100k_base')
             chunks = splitter.split_documents(docs)
             vector_store.add_documents(chunks)
         st.success("✅ PDF ingested successfully into Astra DB!")
