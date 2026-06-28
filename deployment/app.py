@@ -42,7 +42,7 @@ Context from HR Handbook:
 @st.cache_resource
 def load_retriever():
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_name="thenlper/gte-large",
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True},
     )
@@ -66,7 +66,7 @@ def load_retriever():
         with st.spinner("Astra DB collection is empty. Ingesting PDF..."):
             loader = PyPDFLoader(PDF_PATH)
             docs = loader.load()
-            splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=150)
+            splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20)
             chunks = splitter.split_documents(docs)
             vector_store.add_documents(chunks)
         st.success("✅ PDF ingested successfully into Astra DB!")
