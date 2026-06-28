@@ -51,9 +51,9 @@ def load_retriever():
     vector_store = AstraDBVectorStore(
         collection_name="flykite_hr_policies",
         embedding=embeddings,
-        api_endpoint=ASTRA_DB_API_ENDPOINT,
-        token=ASTRA_DB_APPLICATION_TOKEN,
-        namespace=ASTRA_DB_KEYSPACE,
+        api_endpoint=ASTRA_API_ENDPOINT,
+        token=ASTRA_APPLICATION_TOKEN,
+        namespace=ASTRA_KEYSPACE,
     )
 
     # Auto-ingest if collection is empty
