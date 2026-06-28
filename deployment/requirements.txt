@@ -1,14 +1,26 @@
-
-
+# LLM & Local Inference
 llama-cpp-python==0.1.85
+
+# LangChain Core & Integrations
 langchain-community>=0.3
 langchain-core>=0.3
 langchain-huggingface>=0.1
 langchain-text-splitters>=0.3
+langchain-astradb>=0.3.0  
+
+# Embeddings & NLP
 sentence-transformers>=3.0
+
+# Document Processing
 pypdf>=4.0
 huggingface_hub>=0.35.3
-numpy==1.26.4
-chromadb==0.4.24
-streamlit==1.43.2
 
+# Core Dependencies
+numpy==1.26.4
+
+# Vector Stores (Keep Chroma for local dev, Astra for prod)
+chromadb==0.4.24
+
+# UI & Deployment
+streamlit==1.43.2
+python-dotenv>=1.0.0  
