@@ -56,22 +56,22 @@ def load_retriever():
         namespace=ASTRA_KEYSPACE,
     )
 
-    # Auto-ingest if collection is empty
-    try:
-        dummy_check = vector_store.similarity_search("test_query_placeholder", k=1)
-    except Exception:
-        dummy_check = []
+    # # Auto-ingest if collection is empty
+    # try:
+    #     dummy_check = vector_store.similarity_search("test_query_placeholder", k=1)
+    # except Exception:
+    #     dummy_check = []
 
-    if not dummy_check:
-        with st.spinner("Astra DB collection is empty. Ingesting PDF..."):
-            loader = PyPDFLoader(PDF_PATH)
-            docs = loader.load()
-            splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20,encoding_name='cl100k_base')
-            chunks = splitter.split_documents(docs)
-            vector_store.add_documents(chunks)
-        st.success("✅ PDF ingested successfully into Astra DB!")
+    # if not dummy_check:
+    #     with st.spinner("Astra DB collection is empty. Ingesting PDF..."):
+    #         loader = PyPDFLoader(PDF_PATH)
+    #         docs = loader.load()
+    #         splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20,encoding_name='cl100k_base')
+    #         chunks = splitter.split_documents(docs)
+    #         vector_store.add_documents(chunks)
+    #     st.success("✅ PDF ingested successfully into Astra DB!")
 
-    return vector_store.as_retriever(search_kwargs={"k": 4})
+    return vector_store.as_retriever(search_kwargs={"k": 2})
 
 @st.cache_resource
 def load_llm():
@@ -84,16 +84,16 @@ def load_llm():
         )
     return Llama(
         model_path=model_path,
-        n_threads=4,
-        n_batch=512,
-        n_gpu_layers=0, 
-        n_ctx=4096,  # Increased to accommodate context + system prompt
+        n_threads=2,
+        n_batch=256,
+        n_gpu_layers=32, 
+        n_ctx=2300,  # Increased to accommodate context + system prompt
     )
 
 # --- Streamlit UI ---
 st.set_page_config(page_title="Flykite HR Bot", page_icon="✈️", layout="centered")
 st.title("✈️ Flykite Airlines HR Policy Assistant")
-st.markdown(
+st.write_stream(
     "Instant answers from the official Flykite Airlines HR handbook.\n\n"
     "**Ask about:** Leave policies · Benefits · Code of conduct · Disciplinary procedures · Compliance"
 )
