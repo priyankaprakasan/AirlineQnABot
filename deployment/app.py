@@ -93,7 +93,7 @@ def load_llm():
 # --- Streamlit UI ---
 st.set_page_config(page_title="Flykite HR Bot", page_icon="✈️", layout="centered")
 st.title("✈️ Flykite Airlines HR Policy Assistant")
-st.write_stream(
+st.markdown(
     "Instant answers from the official Flykite Airlines HR handbook.\n\n"
     "**Ask about:** Leave policies · Benefits · Code of conduct · Disciplinary procedures · Compliance"
 )
